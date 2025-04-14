@@ -22,4 +22,4 @@
 
 ## Diagrama de Componentes
 ---------------
-![Diagrama de Componentes](LINK AQUI)
+![Diagrama de Componentes](https://github.com/MoraisGordo/Sistema-de-Moedas-Estudantil/blob/main/Assets/Diagramas/Diagrama%20de%20Componentes.png)
