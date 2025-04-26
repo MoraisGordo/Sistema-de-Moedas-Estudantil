@@ -1,25 +1,43 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import Menu from './Global';
+import Global from './Global';
+
 
 function App() {
+  // const ProtectedRoute = ({ children }: any) => {
+  //   if (!isAuthenticated()) {
+  //     return <Navigate to="/login" replace />;
+  //   }
+
+  //   return children;
+  // };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+
+          <Route
+            path="/:page"
+            element={
+              <Global />
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <Global />
+            }
+          />
+
+        </Routes >
+      </BrowserRouter >
+    </>
   );
 }
 
