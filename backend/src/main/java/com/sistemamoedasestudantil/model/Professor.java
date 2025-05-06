@@ -8,10 +8,25 @@ public class Professor extends Pessoa {
         if (quantidade > 0 && quantidade <= saldoMoedas) {
             aluno.adicionarMoedas(quantidade);
             saldoMoedas -= quantidade;
-            // Aqui você pode adicionar lógica para registrar a transação ou enviar a mensagem
         } else {
             throw new IllegalArgumentException("Quantidade inválida de moedas.");
         }
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public int getSaldoMoedas() {
+        return saldoMoedas;
+    }
+
+    public void setSaldoMoedas(int saldoMoedas) {
+        this.saldoMoedas = saldoMoedas;
     }
 
 }

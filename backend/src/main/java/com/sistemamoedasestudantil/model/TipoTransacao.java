@@ -15,17 +15,14 @@ public class TipoTransacao {
     private String nome;
     private String descricao;
 
-    // Construtor padrão
     public TipoTransacao() {
     }
 
-    // Construtor com parâmetros
     public TipoTransacao(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
     }
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -50,13 +47,4 @@ public class TipoTransacao {
         this.descricao = descricao;
     }
 
-    // Método toString
-    @Override
-    public String toString() {
-        return "TipoTransacao{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                '}';
-    }
 }

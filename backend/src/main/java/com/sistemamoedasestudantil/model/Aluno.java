@@ -4,8 +4,6 @@ public class Aluno extends Pessoa {
     private String rg;
     private String endereco;
     private String curso;
-    private String email;
-    private String senha;
     private int saldoMoedas;
 
     public void trocarMoedas(Vantagem v) {
