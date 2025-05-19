@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+    output = "/home/ubuntu/sistema_moeda_estudantil/node_modules/.prisma/client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  STUDENT
+  TEACHER
+  COMPANY
+  ADMIN
+}
+
+model User {
+  id             String    @id @default(uuid())
+  email          String    @unique
+  password       String
+  role           UserRole
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  // Common fields
+  name           String
+  cpf            String?   @unique
+
+  // Student specific fields
+  rg             String?
+  address        String?
+  institutionId  String?
+  institution    Institution? @relation(fields: [institutionId], references: [id])
+  course         String?
+
+  // Teacher specific fields
+  department     String?
+  
+  // Company specific fields
+  cnpj           String?   @unique
+  description    String?
+
+  // Relationships
+  studentTransactions Transaction[] @relation("StudentTransactions")
+  teacherTransactions Transaction[] @relation("TeacherTransactions")
+  advantages      Advantage[]
+  redemptions     Redemption[]
+}
+
+model Institution {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relationships
+  users     User[]
+}
+
+model Transaction {
+  id          String   @id @default(uuid())
+  amount      Int
+  description String
+  createdAt   DateTime @default(now())
+  
+  // Relationships
+  studentId   String
+  student     User     @relation("StudentTransactions", fields: [studentId], references: [id])
+  teacherId   String
+  teacher     User     @relation("TeacherTransactions", fields: [teacherId], references: [id])
+}
+
+model Advantage {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  imageUrl    String?
+  cost        Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relationships
+  companyId   String
+  company     User     @relation(fields: [companyId], references: [id])
+  redemptions Redemption[]
+}
+
+model Redemption {
+  id          String   @id @default(uuid())
+  couponCode  String   @unique
+  createdAt   DateTime @default(now())
+  
+  // Relationships
+  studentId   String
+  student     User     @relation(fields: [studentId], references: [id])
+  advantageId String
+  advantage   Advantage @relation(fields: [advantageId], references: [id])
+}
+
+model TeacherCoinBalance {
+  id          String   @id @default(uuid())
+  teacherId   String   @unique
+  balance     Int      @default(1000)
+  lastRefill  DateTime @default(now())
+}
+
+model StudentCoinBalance {
+  id          String   @id @default(uuid())
+  studentId   String   @unique
+  balance     Int      @default(0)
+}

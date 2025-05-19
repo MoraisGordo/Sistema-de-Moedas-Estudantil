@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 47 95% 76%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 47 95% 65%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 47 95% 55%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 47 95% 65%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 47 95% 76%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 47 95% 65%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 47 95% 55%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 47 95% 65%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.sidebar {
+  @apply fixed left-0 top-0 h-full w-64 bg-white shadow-lg transition-all duration-300 ease-in-out z-40;
+}
+
+.main-content {
+  @apply ml-64 p-6 transition-all duration-300 ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    @apply -left-64;
+  }
+  
+  .sidebar.open {
+    @apply left-0;
+  }
+  
+  .main-content {
+    @apply ml-0;
+  }
+  
+  .main-content.sidebar-open {
+    @apply ml-64;
+  }
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-6;
+}
+
+.btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-secondary transition-colors duration-300 rounded-md px-4 py-2 font-medium;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-secondary-foreground hover:bg-accent transition-colors duration-300 rounded-md px-4 py-2 font-medium;
+}
+
+.btn-outline {
+  @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors duration-300 rounded-md px-4 py-2 font-medium;
+}
+
+.input-field {
+  @apply w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+}
+
+.section-title {
+  @apply text-2xl font-bold mb-6 pb-2 border-b border-muted;
+}
+
+.advantage-card {
+  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden;
+}
+
+.advantage-card-image {
+  @apply w-full h-48 object-cover;
+}
+
+.advantage-card-content {
+  @apply p-4;
+}
+
+.advantage-card-title {
+  @apply text-lg font-semibold mb-2;
+}
+
+.advantage-card-description {
+  @apply text-muted-foreground text-sm mb-4;
+}
+
+.advantage-card-footer {
+  @apply flex justify-between items-center;
+}
+
+.advantage-card-price {
+  @apply text-accent font-bold;
+}
+
+/* SUPPORT NEXTJS ERROR UI */
+nextjs-portal {
+  display: none;
+}
+
+/* SUPPORT NEXTJS ERROR UI */
+nextjs-portal {
+  display: none;
+}
