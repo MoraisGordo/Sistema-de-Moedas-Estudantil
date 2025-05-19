@@ -1,5 +1,8 @@
 package com.sistemamoedasestudantil.model;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Professor extends Pessoa {
     private String departamento;
     private int saldoMoedas;

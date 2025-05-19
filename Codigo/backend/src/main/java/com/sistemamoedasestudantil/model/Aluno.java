@@ -1,5 +1,8 @@
 package com.sistemamoedasestudantil.model;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Aluno extends Pessoa {
     private String rg;
     private String endereco;
