@@ -23,3 +23,8 @@
 ## Diagrama de Componentes
 ---------------
 ![Diagrama de Componentes](https://github.com/MoraisGordo/Sistema-de-Moedas-Estudantil/blob/main/Assets/Diagramas/Diagrama%20de%20Componentes.png)
+
+
+## Diagrama de Sequencia
+---------------
+![Diagrama de Sequencia](https://github.com/MoraisGordo/Sistema-de-Moedas-Estudantil/blob/main/Assets/Diagramas/Diagrama%20de%20Sequencia.png)
